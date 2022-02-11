@@ -25,7 +25,7 @@ const mainPage = `
   <p>
     Введите выражение
   </p>
-  <input>
+  <input autofocus>
 </body>
 </html>
 `
