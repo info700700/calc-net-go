@@ -28,9 +28,11 @@ const mainPage = `
 </style>
 </head>
 <body>
-  <label for="exp">Введите выражение</label>
-  <input id="exp" autofocus>
-  <button>Вычислить</button>
+  <form>
+    <label for="exp">Введите выражение</label>
+    <input id="exp" autofocus>
+    <button>Вычислить</button>
+  </form>
 </body>
 </html>
 `
