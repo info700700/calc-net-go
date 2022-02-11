@@ -31,9 +31,19 @@ label {
   function onCalcRequested(event) {
     event.preventDefault();
 
+    /** @type {HTMLInputElement} */
+    const expElem = document.getElementById('exp');
+
+    const expStr = expElem.value.trim();
+
+    const searchParams = new URLSearchParams();
+    searchParams.set('exp', expStr);
+    const searchParamsStr = searchParams.toString();
+    const url = `/api/calc?${searchParamsStr}`;
+
     const request = new XMLHttpRequest();
     request.addEventListener('load', onResultLoaded);
-    request.open('GET', '/api/calc');
+    request.open('GET', url);
     request.send();
   }
 
