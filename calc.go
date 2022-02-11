@@ -20,12 +20,16 @@ const mainPage = `
 <head>
   <meta charset="utf-8">
   <title>Калькулятор</title>
+  <style>
+    label {
+      display: block;
+	  margin-bottom: 0.1rem;
+    }
+</style>
 </head>
 <body>
-  <p>
-    Введите выражение
-  </p>
-  <input autofocus>
+  <label for="exp">Введите выражение</label>
+  <input id="exp" autofocus>
   <button>Вычислить</button>
 </body>
 </html>
