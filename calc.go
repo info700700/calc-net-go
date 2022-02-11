@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"html"
 	"log"
@@ -14,28 +15,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(":80", nil))
 }
 
-const mainPage = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Калькулятор</title>
-  <style>
-    label {
-      display: block;
-	  margin-bottom: 0.1rem;
-    }
-</style>
-</head>
-<body>
-  <form>
-    <label for="exp">Введите выражение</label>
-    <input id="exp" autofocus>
-    <button>Вычислить</button>
-  </form>
-</body>
-</html>
-`
+//go:embed index.html
+var mainPage string
 
 func handleMain(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, mainPage)
