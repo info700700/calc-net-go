@@ -8,6 +8,10 @@ label {
   display: block;
   margin-bottom: 0.1rem;
 }
+
+#form {
+  margin-bottom: 0.8rem;
+}
 </style>
 </head>
 <body>
@@ -18,6 +22,7 @@ label {
   <input id="exp" autofocus>
   <button>Вычислить</button>
 </form>
+<output id="result"></output>
 
 <script>
   const form = document.getElementById('form');
@@ -25,6 +30,16 @@ label {
 
   function onCalcRequested(event) {
     event.preventDefault();
+
+    const request = new XMLHttpRequest();
+    request.addEventListener('load', onResultLoaded);
+    request.open('GET', '/api/calc');
+    request.send();
+  }
+
+  function onResultLoaded() {
+    const resultElem = document.getElementById('result');
+    resultElem.value = this.responseText;
   }
 </script>
 
