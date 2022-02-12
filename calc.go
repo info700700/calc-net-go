@@ -3,7 +3,6 @@ package main
 import (
 	_ "embed"
 	"fmt"
-	"html"
 	"log"
 	"net/http"
 )
@@ -23,5 +22,6 @@ func handleMain(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleCalc(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	expStr := r.URL.Query().Get("exp")
+	fmt.Fprintf(w, "Exp: %q", expStr)
 }
