@@ -1,3 +1,3 @@
-module github.com/info700700/calc-web-go
+module github.com/info700700/calc-net-go
 
 go 1.17
