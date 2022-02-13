@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	interp "github.com/info700700/sum_interpreter_go"
 )
 
 func main() {
 	http.HandleFunc("/", handleMain)
-	http.HandleFunc("/api/calc", handleCalc)
+	addHandlerErrFunc("/api/calc", calc)
 
 	log.Fatal(http.ListenAndServe(":80", nil))
 }
@@ -21,7 +23,14 @@ func handleMain(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, mainPage)
 }
 
-func handleCalc(w http.ResponseWriter, r *http.Request) {
+func calc(w http.ResponseWriter, r *http.Request) error {
 	expStr := r.URL.Query().Get("exp")
-	fmt.Fprintf(w, "Exp: %q", expStr)
+
+	result, err := interp.Exec(expStr)
+	if err != nil {
+		return err
+	}
+
+	_, err = fmt.Fprint(w, result)
+	return err
 }
