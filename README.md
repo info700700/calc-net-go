@@ -13,5 +13,5 @@ $ ./calc-server
 Запуск приложения в докере.
 ```
 $ make build_image
-$ docker run --detach --publish 80:80 calc-server
+$ docker run --name calc-server --detach --publish 80:80 calc-server
 ```
