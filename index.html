@@ -36,6 +36,11 @@ label {
 
     const expStr = expElem.value.trim();
 
+    if(expStr.length === 0) {
+      cleanOutput();
+      return;
+    }
+
     const searchParams = new URLSearchParams();
     searchParams.set('exp', expStr);
     const searchParamsStr = searchParams.toString();
@@ -48,8 +53,16 @@ label {
   }
 
   function onResultLoaded() {
+    outputStr(this.responseText);
+  }
+
+  function outputStr(str) {
     const resultElem = document.getElementById('result');
-    resultElem.value = this.responseText;
+    resultElem.value = str;
+  }
+
+  function cleanOutput() {
+    outputStr('');
   }
 </script>
 
