@@ -7,5 +7,5 @@
 Запуск приложения в докере.
 ```
 $ make build_image
-$ docker run --publish 80:80 calc-server
+$ docker run --detach --publish 80:80 calc-server
 ```
