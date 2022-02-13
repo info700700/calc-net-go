@@ -10,6 +10,7 @@ COPY go.sum ./
 RUN go mod download
 RUN go mod verify
 
+COPY index.html ./
 COPY *.go ./
 
 RUN go build -o /calc-server
