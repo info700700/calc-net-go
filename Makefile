@@ -1,7 +1,8 @@
-BINARY_NAME=calc-server
-
 build:
-	go build -o ${BINARY_NAME}
+	go build -o calc-server
+
+clean:
+	rm ./calc-server
 
 build_image:
 	docker build --tag calc-server .
