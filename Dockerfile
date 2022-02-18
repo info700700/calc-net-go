@@ -15,6 +15,7 @@ RUN go mod verify
 
 COPY index.html ./
 COPY *.go ./
+COPY handler/*.go ./handler/
 
 RUN go build -o /calc-server
 
