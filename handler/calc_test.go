@@ -11,7 +11,7 @@ import (
 
 func TestCalc(t *testing.T) {
 	// "+" кодируется как "%2B".
-	req := httptest.NewRequest("GET", "http://example.com/api/calc?exp=1%2B2", nil)
+	req := httptest.NewRequest(http.MethodGet, "http://example.com/api/calc?exp=1%2B2", nil)
 	w := httptest.NewRecorder()
 
 	handler.Calc(w, req)
