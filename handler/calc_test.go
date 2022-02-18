@@ -2,6 +2,7 @@ package handler_test
 
 import (
 	"io"
+	"net/http"
 	"net/http/httptest"
 	"testing"
 
@@ -15,12 +16,22 @@ func TestCalc(t *testing.T) {
 	handler.Calc(w, req)
 
 	resp := w.Result()
-	bodyBytes, _ := io.ReadAll(resp.Body)
-	actualBody := string(bodyBytes)
 
-	const expactedBody = "3"
-
-	if actualBody != expactedBody {
-		t.Fatalf("Expected body: %s. Actual body: %s", expactedBody, actualBody)
+	{
+		actualStatusCode := resp.StatusCode
+		const expectedStatusCode = http.StatusOK
+		if actualStatusCode != expectedStatusCode {
+			t.Fatalf(
+				"Actual status code: %d. Expected status code: %d.", actualStatusCode, expectedStatusCode,
+			)
+		}
+	}
+	{
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		actualBody := string(bodyBytes)
+		const expectedBody = "3"
+		if actualBody != expectedBody {
+			t.Fatalf("Actual body: %s. Expected body: %s", actualBody, expectedBody)
+		}
 	}
 }
