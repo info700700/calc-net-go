@@ -3,6 +3,11 @@ build:
 	go build -o calc-server
 
 
+.PHONY: test
+test:
+	go test ./...
+
+
 .PHONY: clean
 clean:
 	rm ./calc-server
