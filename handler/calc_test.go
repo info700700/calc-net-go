@@ -20,16 +20,16 @@ func TestCalc(t *testing.T) {
 	{
 		actualStatusCode := resp.StatusCode
 		const expectedStatusCode = http.StatusOK
+
 		if actualStatusCode != expectedStatusCode {
-			t.Fatalf(
-				"Actual status code: %d. Expected status code: %d.", actualStatusCode, expectedStatusCode,
-			)
+			t.Fatalf("Actual status code: %d. Expected status code: %d.", actualStatusCode, expectedStatusCode)
 		}
 	}
 	{
 		bodyBytes, _ := io.ReadAll(resp.Body)
 		actualBody := string(bodyBytes)
 		const expectedBody = "3"
+
 		if actualBody != expectedBody {
 			t.Fatalf("Actual body: %s. Expected body: %s", actualBody, expectedBody)
 		}
